@@ -6,9 +6,13 @@ const apiRoutes = require('./routes/apiRoutes')
 const htmlRoutes = require('./routes/htmlRoutes')
 const app = express();
 
-app.get('/api/notes', (req, res) => {
-    res.json(db.json);
-    console.log(req.query)
+app.get('/', (req, res) => {
+ res.send ("Welcome to Note Taker");
+});
+
+app.get('/notes', (req, res) => {
+    res.json(notes);
+    // console.log(req.query)
   });
 
 app.listen(3001,()=>{
