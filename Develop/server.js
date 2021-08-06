@@ -1,13 +1,25 @@
-const express= require('express');
-// may have to delete this file
+const fs = require('fs');
+const path = require('path')
+const express = require('express');
+const {db} = require('./data/db.json');
+const apiRoutes = require('./routes/apiRoutes')
+const htmlRoutes = require('./routes/htmlRoutes')
 const app = express();
-const {db} = require('./db/db.json');
-console.log("dfd")
-app.get('/api/db', (req,res) => {
-    let results =db;
+
+app.get('/api/notes', (req, res) => {
+    res.json(db.json);
     console.log(req.query)
-    res.json(results);
-});
+  });
+
 app.listen(3001,()=>{
     console.log(`API server now on port 3001!`);
 });
+app.post('/api/notes', (req,res) => {
+    req.body.title = notes.length.toString();
+    if(!validateNotes(req.body)) {
+        res.status(400).send('note is not properly formatted.');
+    } else {
+        const notes = createNewNotes(req.body, notes);
+        res.json(notes);
+    }
+})
