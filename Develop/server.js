@@ -1,19 +1,25 @@
+//Dependencies that are required.
 const fs = require('fs');
 const path = require('path')
 const express = require('express');
+
 const {notes} = require('./data/db.json');
 const apiRoutes = require('./routes/apiRoutes')
 const htmlRoutes = require('./routes/htmlRoutes');
+const { networkInterfaces } = require('os');
 // const { Router } = require('express');
 // const router =require('express')/Router();
 const app = express();
-// // parse incoming string or array data
+
+
+// // parse incoming string or array data and incomint json
 app.use(express.urlencoded({extended: true}));
-// //parse incoming JSON data
 app.use(express.json());
+app.use(express.static('public'));
+
 // app.use('/api', apiRoutes);
 // app.use('/', htmlRoutes);
-// app.use(express.static('public'));
+
 
 app.get('/', (req, res) => {
  res.send ("Welcome to Note Taker");
@@ -38,17 +44,22 @@ app.get('/api/notes', (req, res) => {
 //     res.sendFile(path.join(__dirname,'../public/index.html'));
 // });
 // router.get()
+
+//Port Listener
 app.listen(3001,()=>{
     console.log(`API server now on port 3001!`);
 });
+
 app.post('/api/notes', (req,res) => {
     // req.body.notes = notes.length.toString();
     // if(!validateNotes(req.body)) {
     //     res.status(400).send('note is not properly formatted.');
     // } else {
-    //     const notes = createNewNotes(req.body, notes);
-        console.log(req.body);
-        res.json(req.body);
+        // const notes = createNewNotes(req.body, notes);
+        const createnewNote=req.body; notes.push(createnewNotes)
+        return console.log("added new note:"+newNote.title)
+        // console.log(req.body);
+        // res.json(req.body);
 // }
 });
 // app.delete('/', (req, res)=> {
