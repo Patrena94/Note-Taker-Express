@@ -23,7 +23,7 @@ app.use(express.static('public'));
 function createNewNote(body, notesArray){
     const note = body;
     notesArray.push(note);
-    fs.writeFileSync(path.join(__dirname,'.data/notes.json'),
+    fs.writeFileSync(path.join(__dirname,'./data/db.json'),
     JSON.stringify({notes: notesArray}, null, 2)
     );
     return note;
@@ -69,8 +69,6 @@ app.get('/api/notes', (req, res) => {
       } else {res.send(44);
     }    
       });
-    //   res.send(notes[req.params.id]);
-
 
 //Port Listener
 app.listen(3001,()=>{
@@ -79,21 +77,14 @@ app.listen(3001,()=>{
   // POST Method Route
   
 app.post('/api/notes', (req,res) => {
-//     let newNote=req.body;
-//     notes.push(newNote);
-//     // updateDb();
-//     return console.log("New note:"+newNote.title);
-// });
     req.body.id = notes.length.toString();
     // // If any data in req.body is incorrect, send error back
     if(!validateNote (req.body)) {
         res.status(400).send('note is not properly formatted.');
     } else {
         const note = createNewNote(req.body, notes);
-    //     const createnewNote=req.body; notes.push(createnewNotes)
-        // return console.log("added new note:"+newNote.title)
-        // console.log(req.body);
-        res.json('note');
+   
+        res.json(req.body);
     }
 // // }
 });
