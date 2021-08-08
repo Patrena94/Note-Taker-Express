@@ -1,4 +1,3 @@
-require("./routes/html")(app);require("./routes/html")(app);
 //Dependencies that are required.
 const fs = require('fs');
 const path = require('path')
@@ -70,16 +69,7 @@ app.get('/api/notes', (req, res) => {
       } else {res.send(44);
     }    
       });
-      app.get('/api/notes',(req,res)=> {
-          res.sendFile(path.join(__dirname, './public/index.html'));
-      });
-      app.get('/api/notes', (req,res) => {
-          res.sendFile(path.join(__dirname, './public/notes.html'));
-      });
-      app.get('*', (req,res)=> {
-          res.sendFile(path.join(__dirname, '.public/index.html'));
-      });
-    
+
 //Port Listener
 app.listen(3001,()=>{
     console.log(`API server now on port 3001!`);
@@ -96,9 +86,9 @@ app.post('/api/notes', (req,res) => {
    
         res.json(req.body);
     }
+// // }
 });
-// Deletion options
-app.delete('/api/notes/:id', (req,res)=>{
-    notes.splice(req.params.id, 1);
-    res.json(req.body);
-})
+// // app.delete('/', (req, res)=> {
+// //     res.send('Delete request to homepage')
+// // })
+// // // app.delete(pathm callback[, callback])

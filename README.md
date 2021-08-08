@@ -6,6 +6,7 @@ original db.json code:
         "text":"Test text"
     }
 ]
+class="delBtn"><i class="fas fa-calendar-times"></i></button>
 
 use the following codes from express guide to build code (convert to E6):
 app.post('/', function (req, res) {
