@@ -89,6 +89,6 @@ app.post('/api/notes', (req,res) => {
 // // }
 });
 // // app.delete('/', (req, res)=> {
-// //     res.send('Delete request to homepag')
+// //     res.send('Delete request to homepage')
 // // })
 // // // app.delete(pathm callback[, callback])
