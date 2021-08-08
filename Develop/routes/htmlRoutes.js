@@ -1,5 +1,5 @@
 // // // Dependencies required
-// // const fs = require('fs');
+const fs = require('fs');
 
 const output =('../data/db.json');
 const dataBase = require('../data/db.json');
@@ -8,7 +8,6 @@ let id=dataBase.length +1;
 module.exports =(app)=> {
 // ApI Route
 app.get("/api/notes", (req, res)=>{
-
     res.json(dataBase);
 });
 //Post Routes
