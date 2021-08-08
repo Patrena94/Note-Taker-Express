@@ -53,7 +53,7 @@ function filterbyQuery(query, notesArray) {
     }
     
 function findById(id, notesArray){
-    let result = notesArray.filter(animal => notes.id===id)[0];
+    let result = notesArray.filter(note => notes.id===id)[0];
     return result;
 }
 

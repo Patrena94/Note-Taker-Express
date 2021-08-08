@@ -24,6 +24,6 @@ require("./routes/htmlroutes")(app);
 require("./routes/apiRoutes")(app);
 
 // Initate Server
-app.listen(Port, () => {
+app.listen(PORT, () => {
     console.log("App is now listening on PORT:" + PORT);
 });

@@ -1,20 +1,21 @@
 // // // Dependencies required
 // // const fs = require('fs');
 
-const output =('./data/db.json');
-const dataBase = require('./data/db.json');
+const output =('../data/db.json');
+const dataBase = require('../data/db.json');
 let id=dataBase.length +1;
 
 module.exports =(app)=> {
 // ApI Route
 app.get("/api/notes", (req, res)=>{
+
     res.json(dataBase);
 });
 //Post Routes
-app.post("/api/notes", (req, res) => {
-    req.body.id=id++;
+app.post("/api/notes", (req,res) => {
+    req.body.id = id++;
     dataBase.push(req.body);
-    false.write(output, JSON.stringify(dataBase), (err) =>{
+    fs.write(output, JSON.stringify(dataBase), (err) =>{
         if(err) throw err;
     });
 });
