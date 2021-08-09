@@ -1,4 +1,4 @@
-git//Dependencies that are required.
+//Dependencies that are required.
 const fs = require('fs');
 const path = require('path')
 const express = require('express');
